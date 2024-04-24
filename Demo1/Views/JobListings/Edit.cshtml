@@ -1,0 +1,134 @@
+﻿@model Demo1.Models.JobListing
+
+@{
+    ViewData["Title"] = "Edit Job";
+}
+
+<h1>Edit</h1>
+
+<h4>JobListing</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RequiredQualifications" class="control-label"></label>
+                <input asp-for="RequiredQualifications" class="form-control" />
+                <span asp-validation-for="RequiredQualifications" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplicationDeadline" class="control-label"></label>
+                <input asp-for="ApplicationDeadline" class="form-control" />
+                <span asp-validation-for="ApplicationDeadline" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplicationUserId" class="control-label"></label>
+                <input asp-for="ApplicationUserId" class="form-control" readonly />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+<style>
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Font */
+body {
+    font-family: Arial, sans-serif;
+    margin-bottom: 100px; /* Đảm bảo có khoảng cách phía dưới của body để footer không chồng lên */
+}
+
+/* Main container */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+h1 {
+    margin-bottom: 20px;
+}
+
+/* Form */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Button */
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Back link */
+.back-link {
+    margin-top: 20px;
+    display: inline-block;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    color: #0056b3;
+}
+
+/* Footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+</style>

@@ -1,0 +1,97 @@
+﻿@model IEnumerable<Demo1.Models.JobListing>
+
+@{
+    ViewData["Title"] = "Jobs";
+}
+
+<h1>JobListing</h1>
+<form asp-controller="JobListings" asp-action="Index">
+    <p>
+        Title: <input type="text" name="searchString" />
+        <input type="submit" value="Search" />
+    </p>
+</form>
+<p>
+    <a class="btn btn-outline-primary" onclick="window.location.href='@Url.Action("Index", "JobListings")'" asp-action="Create">Create New</a>
+</p>
+<table class = "table-container">
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RequiredQualifications)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplicationDeadline)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequiredQualifications)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationDeadline)
+            </td>
+            <td>
+                    <a class="btn btn-outline-primary" onclick="window.location.href='@Url.Action("Index", "JobListings")'" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a class="btn btn-outline-primary" onclick="window.location.href='@Url.Action("Index", "JobListings")'" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a class="btn btn-outline-primary" onclick="window.location.href='@Url.Action("Index", "JobListings")'" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</table>
+
+<style>
+.table-container {
+    margin-bottom: 100px; /* Điều chỉnh giá trị này sao cho phù hợp với chiều cao của footer */
+}
+    /* Style for the table */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    border: 1px solid #dee2e6;
+    padding: 12px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Style for action links */
+.action-link {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: bold;
+}
+
+.action-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+</style>

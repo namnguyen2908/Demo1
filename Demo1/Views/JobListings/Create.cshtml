@@ -1,0 +1,139 @@
+﻿@model Demo1.Models.JobListing
+
+@{
+    ViewData["Title"] = "Create Job";
+}
+
+<h1>Create</h1>
+
+<h4>JobListing</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create" class="needs-validation" novalidate>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Name:</label>
+                <input asp-for="Name" class="form-control" required />
+                <span asp-validation-for="Name" class="text-danger"></span>
+                <div class="invalid-feedback">Please enter a name.</div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">Description:</label>
+                <input asp-for="Description" class="form-control" required />
+                <span asp-validation-for="Description" class="text-danger"></span>
+                <div class="invalid-feedback">Please enter a description.</div>
+            </div>
+            <div class="form-group">
+                <label asp-for="RequiredQualifications" class="control-label">Required Qualifications:</label>
+                <input asp-for="RequiredQualifications" class="form-control" required />
+                <span asp-validation-for="RequiredQualifications" class="text-danger"></span>
+                <div class="invalid-feedback">Please enter required qualifications.</div>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplicationDeadline" class="control-label">Application Deadline:</label>
+                <input asp-for="ApplicationDeadline" class="form-control" required />
+                <span asp-validation-for="ApplicationDeadline" class="text-danger"></span>
+                <div class="invalid-feedback">Please enter an application deadline.</div>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplicationUserId" class="control-label">Application User ID:</label>
+                <input asp-for="ApplicationUserId" class="form-control" readonly />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+<style>
+   /* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Font */
+body {
+    font-family: Arial, sans-serif; /* Thay đổi font tại đây */
+}
+
+/* Style for form container */
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 150px); /* Đảm bảo form không trùng với footer */
+}
+
+.col-md-6 {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 600px; /* Giới hạn chiều rộng của form */
+    width: 100%; /* Đảm bảo form không vượt quá chiều rộng tối đa */
+}
+
+/* Style for form elements */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Style for submit button */
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Style for back link */
+a {
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+}footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #343a40; /* Màu nền của footer */
+    color: #fff; /* Màu chữ của footer */
+    text-align: center;
+    padding: 20px 0; /* Khoảng cách giữa nội dung và viền của footer */
+}
+</style>

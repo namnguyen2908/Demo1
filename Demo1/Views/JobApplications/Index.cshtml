@@ -1,0 +1,99 @@
+﻿@model IEnumerable<Demo1.Models.JobApplication>
+
+@{
+    ViewData["Title"] = "List CV";
+}
+
+<h1>JobApplication</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Coverletter)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobListing)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplicationUser)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Coverletter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobListing.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationUser.Id)
+            </td>
+            <td>
+                    <a class="btn btn-outline-primary" onclick="window.location.href='@Url.Action("Index", "JobApplications")'" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a class="btn btn-outline-primary" onclick="window.location.href='@Url.Action("Index", "JobApplications")'" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a class="btn btn-outline-primary" onclick="window.location.href='@Url.Action("Index", "JobApplications")'" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<style>
+    /* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Font */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Table */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f2f2f2;
+}
+
+/* Links */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+/* Actions */
+.action-links a {
+    margin-right: 5px;
+}
+
+.action-links a:last-child {
+    margin-right: 0;
+}
+
+</style>

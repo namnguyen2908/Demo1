@@ -1,0 +1,158 @@
+﻿@model Demo1.Models.JobListing
+
+@{
+    ViewData["Title"] = "Details Job";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>JobListing</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RequiredQualifications)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RequiredQualifications)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ApplicationDeadline)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ApplicationDeadline)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ApplicationUser)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ApplicationUser.Id)
+        </dd>
+    </dl>
+
+</div>
+<div>
+    <a class="btn btn-outline-primary" onclick="window.location.href='@Url.Action("Index", "JobListings")'" asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a class="btn btn-outline-primary" onclick="window.location.href='@Url.Action("Index", "JobListings")'"asp-action="Index">Back to List</a>
+</div>
+
+<div>
+    <h4>Job Applications</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.JobApplication.First().Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.JobApplication.First().Coverletter)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var jobApplication in Model.JobApplication)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => jobApplication.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => jobApplication.Coverletter)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<style>
+   /* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Font */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Main container */
+.container {
+    max-width: 960px; /* Điều chỉnh chiều rộng tối đa của container */
+    margin: 0 auto; /* Canh giữa container */
+    padding: 20px; /* Khoảng cách giữa nội dung và viền của container */
+}
+
+/* Header */
+h1 {
+    margin-bottom: 20px; /* Khoảng cách giữa tiêu đề và nội dung */
+}
+
+/* Form */
+.form-group {
+    margin-bottom: 20px; /* Khoảng cách giữa các thành phần của form */
+}
+
+label {
+    font-weight: bold;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Button */
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Hiệu ứng chuyển đổi màu nền */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Footer */
+footer {
+    background-color: #343a40;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Link */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+</style>
